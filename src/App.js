@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
-function App() {
+export default function ResponsiveDateTimePickers() {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleChange = (datetime) => {
+    setSelectedDate(datetime);
+  };
+
+  const handleClear = () => {
+    setSelectedDate(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      height="100vh"
+    >
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DateTimePicker
+          label="Basic date time picker"
+          value={selectedDate}
+          onChange={handleChange}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {(params) => (
+            <TextField
+              {...params}
+              inputProps={{
+                ...params.inputProps,
+                readOnly: true,
+              }}
+            />
+          )}
+        </DateTimePicker>
+      </LocalizationProvider>
+
+      <Button
+        variant="outlined"
+        style={{ marginTop: 16 }}
+        onClick={handleClear}
+      >
+        Clear
+      </Button>
+    </Box>
   );
 }
-
-export default App;
