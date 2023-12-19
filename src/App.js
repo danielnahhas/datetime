@@ -27,6 +27,12 @@ export default function ResponsiveDateTimePickers() {
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateTimePicker
+          slotProps={{
+            // The actions will be the same between desktop and mobile
+            actionBar: {
+              actions: ["clear", "accept"],
+            },
+          }}
           label="Basic date time picker"
           value={selectedDate}
           onChange={handleChange}
@@ -43,13 +49,7 @@ export default function ResponsiveDateTimePickers() {
         </DateTimePicker>
       </LocalizationProvider>
 
-      <Button
-        variant="outlined"
-        style={{ marginTop: 16 }}
-        onClick={handleClear}
-      >
-        Clear
-      </Button>
+      
     </Box>
   );
 }
