@@ -3,7 +3,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+
 import Box from "@mui/material/Box";
 
 export default function ResponsiveDateTimePickers() {
@@ -11,10 +11,6 @@ export default function ResponsiveDateTimePickers() {
 
   const handleChange = (datetime) => {
     setSelectedDate(datetime);
-  };
-
-  const handleClear = () => {
-    setSelectedDate(null);
   };
 
   return (
@@ -48,8 +44,6 @@ export default function ResponsiveDateTimePickers() {
           )}
         </DateTimePicker>
       </LocalizationProvider>
-
-      
     </Box>
   );
 }
