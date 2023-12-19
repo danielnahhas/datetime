@@ -24,7 +24,6 @@ export default function ResponsiveDateTimePickers() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateTimePicker
           slotProps={{
-            // The actions will be the same between desktop and mobile
             actionBar: {
               actions: ["clear", "accept"],
             },
